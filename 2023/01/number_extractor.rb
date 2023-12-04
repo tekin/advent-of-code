@@ -16,7 +16,7 @@ class NumberExtractor
     @input = input
   end
 
-  def as_numbers
+  def extract
     number_matches.map { |string| is_digit?(string) ? string : WORDS_TO_NUMBERS.fetch(string) }
   end
 
