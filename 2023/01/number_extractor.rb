@@ -1,15 +1,15 @@
 class NumberExtractor
-  NUMBERS_REGEXP = /(\d|one|two|three|four|five|six|seven|eight|nine)/
+  NUMBERS_REGEXP = /(\d|on(?=e)|tw(?=o)|thre(?=e)|four|fiv(?=e)|six|seve(?=n)|eigh(?=t)|nin(?=e))/
   WORDS_TO_NUMBERS = {
-    "one" => "1",
-    "two" => "2",
-    "three" => "3",
+    "on" => "1",
+    "tw" => "2",
+    "thre" => "3",
     "four" => "4",
-    "five" => "5",
+    "fiv" => "5",
     "six" => "6",
-    "seven" => "7",
-    "eight" => "8",
-    "nine" => "9"
+    "seve" => "7",
+    "eigh" => "8",
+    "nin" => "9"
   }
 
   def initialize(input)
@@ -17,16 +17,14 @@ class NumberExtractor
   end
 
   def as_numbers
-    as_strings.map do |string|
-      is_digit?(string) ? string : WORDS_TO_NUMBERS.fetch(string)
-    end
-  end
-
-  def as_strings
-    @input.scan(NUMBERS_REGEXP).flatten
+    number_matches.map { |string| is_digit?(string) ? string : WORDS_TO_NUMBERS.fetch(string) }
   end
 
   private
+
+  def number_matches
+    @input.scan(NUMBERS_REGEXP).flatten
+  end
 
   def is_digit?(string)
     Integer(string) rescue false
