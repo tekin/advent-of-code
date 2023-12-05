@@ -6,4 +6,4 @@ require "02/day_two"
 puts "## Day 1 ##"
 puts DayOne.solve File.read('2023/01/input.txt')
 puts "## Day 2 ##"
-puts DayTwo.solve File.read('2023/02/input.txt')
+puts DayTwo.solve File.read('2023/02/input.txt'), red: 12, green: 13, blue: 14

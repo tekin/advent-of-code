@@ -1,5 +1,29 @@
 class DayTwo
-  def self.solve(input)
+  attr_reader :red, :green, :blue
+
+  def self.solve(input, red:, green:, blue:)
+    new(input, red:, green:, blue:).solve
+  end
+
+  def initialize(input, red:, green:, blue:)
+    @games = parse_input(input)
+    @red = red
+    @green = green
+    @blue = blue
+  end
+
+  def solve
+    possible_games.sum(&:id)
+  end
+
+  private
+
+  def possible_games
+    @games.select { |game| game.max_red <= red && game.max_blue <= blue && game.max_green <= green  }
+  end
+
+  def parse_input(input)
+    input.split("\n").map { |line| Game.parse(line) }
   end
 
   class Game
