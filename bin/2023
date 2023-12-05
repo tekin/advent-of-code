@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
 $LOAD_PATH.unshift File.dirname(__FILE__) + "/../2023/"
 require "01/day_one"
+require "02/day_two"
 
 puts "## Day 1 ##"
 puts DayOne.solve File.read('2023/01/input.txt')
+puts "## Day 2 ##"
+puts DayTwo.solve File.read('2023/02/input.txt')
