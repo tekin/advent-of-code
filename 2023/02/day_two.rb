@@ -16,6 +16,10 @@ class DayTwo
     possible_games.sum(&:id)
   end
 
+  def sum_of_powers
+    @games.sum(&:power)
+  end
+
   private
 
   def possible_games
@@ -46,6 +50,10 @@ class DayTwo
       @max_red = max_red
       @max_green = max_green
       @max_blue = max_blue
+    end
+
+    def power
+      max_red * max_green * max_blue
     end
   end
 end

@@ -7,3 +7,5 @@ puts "## Day 1 ##"
 puts DayOne.solve File.read('2023/01/input.txt')
 puts "## Day 2 ##"
 puts DayTwo.solve File.read('2023/02/input.txt'), red: 12, green: 13, blue: 14
+puts "## Day 2 part 2 ##"
+puts DayTwo.new(File.read('2023/02/input.txt'), red: 12, green: 13, blue: 14).sum_of_powers

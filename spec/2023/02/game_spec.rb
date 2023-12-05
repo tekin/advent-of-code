@@ -23,4 +23,40 @@ RSpec.describe DayTwo::Game do
       expect(game.max_green).to eql 2
     end
   end
+
+  context 'with Game 1' do
+    it 'returns the max cube counts and expected power' do
+      game = DayTwo::Game.parse("Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green")
+
+      expect(game.max_red).to eql 4
+      expect(game.max_green).to eql 2
+      expect(game.max_blue).to eql 6
+
+      expect(game.power).to eql 48
+    end
+  end
+
+  context 'with Game 2' do
+    it 'returns the max cube counts and expected power' do
+      game = DayTwo::Game.parse("Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue")
+
+      expect(game.max_red).to eql 1
+      expect(game.max_green).to eql 3
+      expect(game.max_blue).to eql 4
+
+      expect(game.power).to eql 12
+    end
+  end
+
+  context 'with Game 3' do
+    it 'returns the max cube counts and expected power' do
+      game = DayTwo::Game.parse("Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red")
+
+      expect(game.max_red).to eql 20
+      expect(game.max_green).to eql 13
+      expect(game.max_blue).to eql 6
+
+      expect(game.power).to eql 1560
+    end
+  end
 end
