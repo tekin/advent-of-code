@@ -5,18 +5,18 @@ RSpec.describe NumberLocator do
   let(:input) { File.read("spec/fixtures/2023/03/example.txt") }
 
   describe "#numbers" do
-    it "returns numbers found in the input" do
-      expect(number_locator.numbers).to eql [
-        467,
-        114,
-        35,
-        633,
-        617,
-        58,
-        592,
-        755,
-        664,
-        598
+    it "returns data objects that have a value" do
+      expect(number_locator.numbers).to match_array [
+        have_attributes(value: 467),
+        have_attributes(value: 114),
+        have_attributes(value: 35),
+        have_attributes(value: 633),
+        have_attributes(value: 617),
+        have_attributes(value: 58),
+        have_attributes(value: 592),
+        have_attributes(value: 755),
+        have_attributes(value: 664),
+        have_attributes(value: 598)
       ]
     end
   end
