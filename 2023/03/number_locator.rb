@@ -2,7 +2,7 @@ require "strscan"
 
 class NumberLocator
   NUMBER_MATCH = /(\d+)/
-  Number = Data.define(:value, :row, :col)
+  Number = Struct.new(:value, :row, :col, :length)
 
   def initialize(input)
     @input = input
@@ -16,7 +16,7 @@ class NumberLocator
       until scanner.eos? do
         break unless scanner.check_until(NUMBER_MATCH)
 
-        value = scanner.matched.to_i
+        value = scanner.matched
         # advance to the first digit
         scanner.scan_until /\d/
         # use the position to grab the column for the first digit
@@ -24,7 +24,7 @@ class NumberLocator
         # advance to the end of the current number (first non-digit)
         scanner.skip_until /\D/
         # Capture our Number object
-        numbers << Number.new(value:, row:, col:)
+        numbers << Number.new(value: value.to_i, row:, col:, length: value.length)
       end
 
       numbers
